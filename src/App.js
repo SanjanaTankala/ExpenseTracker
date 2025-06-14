@@ -1,24 +1,29 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Login from "./components/Login";
+import Register from "./components/Register";
+import Dashboard from "./components/Dashboard";
+import logo from "./assets/logo.png";
+import AnnualExpensePage from "./components/AnnualExpensePage";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <div className="app-bg">
+        <header className="app-header">
+          <img src={logo} alt="Expense Tracker Logo" className="app-logo" />
+          <h1>Expense Tracker</h1>
+        </header>
+        <main>
+          <Routes>
+            <Route path="/" element={<Login />} />
+            <Route path="/register" element={<Register />} />
+            <Route path="/dashboard" element={<Dashboard />} />
+            <Route path="/annual-expenses" element={<AnnualExpensePage />} />
+          </Routes>
+        </main>
+      </div>
+    </Router>
   );
 }
 
